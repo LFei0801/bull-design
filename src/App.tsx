@@ -1,22 +1,33 @@
 import {Button} from "./components/Button/button";
+import {Alert} from "./components/Alert/alert";
+import {useState} from "react";
 
 export default function App() {
+  const [visible,setVisible] = useState<boolean>(false)
   return (
     <>
-      <Button onClick={() => console.log("default button clicked")}>default button</Button>
-      <Button size={"lg"} autoFocus>large button</Button>
-      <br/>
-      <Button btnType={"danger"} >danger button</Button>
-      <Button disabled>disable button</Button>
-      <br/>
       <Button
-        btnType={"link"}
-        href={"https://www.baidu.com"}
-        onClick={() => console.log("link button active")}
-      >
-        Baidu link
+        onClick={() => setVisible(!visible)}>
+        default button
       </Button>
-      <Button btnType={"link"} href={"https://www.baidu.com"} disabled>Baidu link</Button>
+      <Alert
+        title={"提示标题哦亲"}
+        visible={visible}
+      >
+        this is a alert!
+      </Alert>
+      <Alert
+        type={"dark"}
+        title={"提示标题哦亲"}
+        closeable
+        onClose={() => {
+          setVisible(false)
+          console.log("close btn clicking")
+        }}
+        visible={visible}
+      >
+        this is a alert!
+      </Alert>
     </>
   )
 }

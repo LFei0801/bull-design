@@ -1,0 +1,55 @@
+@mixin alert-style(
+  $background,
+  $color,
+){
+  background: $background;
+  color: $color;
+}
+
+.alert {
+  visibility: hidden;
+  padding: $btn-padding-y $btn-padding-x;
+  width: $alert-width;
+  border-radius: $btn-border-radius-sm;
+  border: $border-width solid transparent;
+  box-shadow: $btn-box-shadow;
+  position: relative;
+  @include alert-style($primary,$white);
+
+  .alert-title {
+    margin-bottom: 0;
+    line-height: $alert-line-height;
+    font-size: $alert-title-font-size;
+  }
+
+  .alert-message{
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: $alert-line-height;
+    font-size: $alert-message-font-size;
+  }
+
+  .alert-close-icon {
+    position: absolute;
+    right: $alert-icon-right;
+    top : $alert-icon-top;
+    font-style: normal;
+    cursor: pointer;
+    font-weight: $alert-icon-font-weight;
+    font-size: $alert-icon-font-size;
+  }
+}
+
+.alert-danger{
+  @include alert-style($danger,$white)
+}
+.alert-warning{
+  @include alert-style($warning,$gray-700)
+}
+.alert-dark{
+  @include alert-style(darken($body-color,30%),$white)
+}
+
+.show {
+  visibility:visible;
+}
