@@ -1,0 +1,111 @@
+@mixin button-size($padding-y,$padding-x,$font-size,$border-radius) {
+  padding: $padding-y $padding-y;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
+@mixin button-styles(
+  $background,
+  $border,
+  $color,
+  $hover-background : lighten($background,7.5%),
+  $hover-border : lighten($border,10%),
+  $hover-color : $color
+) {
+  background: $background;
+  color : $color;
+  border-color: $border;
+
+  &:hover {
+    background: $hover-background;
+    color : $hover-color;
+    border-color: $hover-border;
+  }
+  &:focus,
+  &.focus, {
+    background: $hover-background;
+    color : $hover-color;
+    border-color: $hover-border;
+  }
+  &:disabled,&[disabled] {
+    background: $background;
+    color : $color;
+    border-color: $border;
+  }
+}
+
+.btn{
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  border: $btn-border-width solid transparent;
+  box-shadow: $btn-box-shadow;
+  font-weight: $btn-font-weight;
+  transition: $btn-transition;
+  @include button-size($btn-padding-y,$btn-padding-x,$btn-font-size,$btn-border-radius);
+
+  // disable样式
+  &.disabled,&[disabled] {
+    cursor: not-allowed;
+    opacity: $btn-disabled-opacity;
+    box-shadow: none;
+    > * {
+      pointer-events: none;
+    }
+  }
+
+  &:focus,&.focus {
+    outline: none;
+  }
+}
+
+.btn-lg {
+  @include button-size($btn-padding-y-lg,$btn-padding-x-lg,$btn-font-size-lg,$btn-border-radius-lg)
+}
+
+.btn-sm {
+  @include button-size($btn-padding-y-sm,$btn-padding-x-sm,$btn-font-size-sm,$btn-border-radius-sm)
+}
+
+.btn-primary {
+  @include button-styles($primary,$primary,$white)
+}
+
+.btn-danger {
+  @include button-styles($danger,$danger,$white)
+}
+
+.btn-warning {
+  @include button-styles($warning,$warning,$white)
+}
+
+.btn-info{
+  @include button-styles($info,$info,$white)
+}
+
+.btn-default {
+  @include button-styles($white,$gray-400,$body-color,$white,$primary,$primary)
+}
+
+.btn-link {
+  font-weight: $font-weight-normal;
+  color : $btn-link-color;
+  text-decoration: $link-decoration;
+  box-shadow: none;
+
+  &:hover{
+    color : $btn-link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+  &:focus,
+  &.focus {
+    text-decoration: $link-hover-decoration;
+    box-shadow: none;
+  }
+  &.disabled {
+    color : $btn-link-disabled-color;
+    pointer-events: none;
+  }
+}

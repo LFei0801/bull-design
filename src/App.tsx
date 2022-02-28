@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Button} from "./components/Button/button";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Button onClick={() => console.log("default button clicked")}>default button</Button>
+      <Button size={"lg"} autoFocus>large button</Button>
+      <br/>
+      <Button btnType={"danger"} >danger button</Button>
+      <Button disabled>disable button</Button>
+      <br/>
+      <Button
+        btnType={"link"}
+        href={"https://www.baidu.com"}
+        onClick={() => console.log("link button active")}
+      >
+        Baidu link
+      </Button>
+      <Button btnType={"link"} href={"https://www.baidu.com"} disabled>Baidu link</Button>
+    </>
+  )
 }
-
-export default App;
