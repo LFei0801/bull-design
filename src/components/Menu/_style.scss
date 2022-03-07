@@ -10,8 +10,9 @@
   .menu-item {
     transition: $menu-transition;
     padding: $menu-item-padding-y $menu-item-padding-x;
+    position: relative;
     cursor: pointer;
-    &:hover,&:focus {
+    &.is-active,&:hover,&:focus {
       text-decoration: none;
       color : $menu-item-active-color;
       border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
@@ -26,9 +27,49 @@
         pointer-events: none;
       }
     }
+  }
+  .bull-sub-menu {
+    flex-direction: column;
+    list-style: none;
+    display: none;
+    padding: 0;
+    white-space: nowrap;
+    > * .menu-item {
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      cursor: pointer;
+      transition: $menu-transition;
+      color: $body-color;
+      &.is-active,&:hover {
+        color : $menu-item-active-color !important;
+      }
+    }
+  }
+  .bull-sub-menu.is-open{
+    display: block;
+  }
+}
+
+.menu-horizontal {
+  flex-direction: row;
+  >.menu-item {
+    border-bottom: $menu-item-active-border-width solid transparent;
     &.is-active {
-      color : $menu-item-active-color;
       border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+    }
+  }
+  .bull-sub-menu {
+    position: absolute;
+    background: $white;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    border: $menu-border-color solid $menu-border-color;
+    > * .menu-item {
+      border-left: $menu-item-active-color solid transparent;
+      &.is-active {
+        border-bottom: 0;
+        border-left: $menu-item-active-border-width solid $menu-item-active-color;
+      }
     }
   }
 }
@@ -36,17 +77,12 @@
 .menu-vertical {
   flex-direction: column;
   margin: 10px 30px;
+  border-bottom: 0;
   .menu-item{
-    border-bottom: none;
     border-left: $menu-item-active-border-width solid transparent;
-    &:focus,&:hover {
+    &:focus,&:hover,&.is-active {
       border-bottom: none;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
-    }
-    &.is-active {
-      color : $menu-item-active-color;
-      border-left: $menu-item-active-border-width solid $menu-item-active-color;
-      border-bottom: none;
     }
     &.is-disabled {
       &:hover,&:focus {

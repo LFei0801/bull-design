@@ -5,33 +5,38 @@
  * style ?:
  * onSelect ?: 菜单项被点击事件
  * mode ?: 横向还是纵向菜单
+ * defaultOpenedMenu : 默认打开子菜单，应该是垂直菜单才有
  */
 import React, {CSSProperties, FC , createContext, useState} from "react";
 import classnames from "classnames";
 import {MenuItemProps} from "./menu-item";
 
 export interface MenuProps {
-  defaultIndex ?: number
+  defaultIndex ?: string
   className ?: string
   style ?: CSSProperties
-  mode ?: "horizon" | "vertical"
-  onSelect ?: (selectIndex : number) => void
+  mode ?: "horizontal" | "vertical"
+  onSelect ?: (selectIndex : string) => void
+  defaultOpenedMenu ?: string[]
 }
 
 // TODO 完成SubMenu组件，添加单元测试
 export const MenuContext = createContext<{
-  index : number,
-  onSelect ?: (selectIndex : number) => void
-}>({index : 0})
+  index : string,
+  onSelect ?: (selectIndex : string) => void
+  mode ?: "horizontal" | "vertical"
+  defaultOpenedMenu ?: string[]
+}>({index : "0"})
 
 export const Menu:FC<MenuProps> = props => {
-  const {defaultIndex, style, onSelect, mode, className, children} = props
-  const [currentActive, setActive] = useState<number | undefined>(defaultIndex)
+  const {defaultIndex, style, onSelect, mode, className, children,defaultOpenedMenu} = props
+  const [currentActive, setActive] = useState<string | undefined>(defaultIndex)
   const classes = classnames("bull-menu", className, {
-    "menu-vertical": mode === "vertical"
+    "menu-vertical": mode === "vertical",
+    "menu-horizontal" : mode === "horizontal"
   })
 
-  const handleSelect = (index: number) => {
+  const handleSelect = (index: string) => {
     setActive(index)
     if (onSelect) {
       onSelect(index)
@@ -40,13 +45,13 @@ export const Menu:FC<MenuProps> = props => {
 
   const renderChildren = () => {
     // 遍历Children元素
-    // 如果children元素是MenuItem 就渲染，否则就输出一个Warning
+    // 如果children元素是MenuItem 或者 SubMenu 就渲染，否则就输出一个Warning
     return React.Children.map(children,(child,index) => {
       const childELe = child as React.FunctionComponentElement<MenuItemProps>
       const { displayName } = childELe.type
-      if(displayName === "menuItem") {
+      if(displayName === "menuItem" || displayName === "subMenu") {
         // 默认传入index给子元素，不需要显示传入index
-        return React.cloneElement(childELe, { index })
+        return React.cloneElement(childELe, {index : `${index}`})
       }else{
         console.error("warning : menu has a child which not a MenuItem Component")
       }
@@ -54,10 +59,12 @@ export const Menu:FC<MenuProps> = props => {
   }
 
   return (
-    <ul className={classes} style={style}>
+    <ul className={classes} style={style} data-testid={"test-menu"}>
       <MenuContext.Provider value={{
-        index : currentActive ? currentActive : 0,
-        onSelect : handleSelect
+        index : currentActive ? currentActive : "0",
+        onSelect : handleSelect,
+        mode,
+        defaultOpenedMenu
       }}>
         {renderChildren()}
       </MenuContext.Provider>
@@ -66,6 +73,7 @@ export const Menu:FC<MenuProps> = props => {
 }
 
 Menu.defaultProps = {
-  defaultIndex : 0,
-  mode : "horizon"
+  defaultIndex : "0",
+  mode : "horizontal",
+  defaultOpenedMenu : []
 }
