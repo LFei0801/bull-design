@@ -2,19 +2,19 @@
   $background,
   $color,
 ){
-  background: $background;
+  background: lighten($background,15%);
   color: $color;
 }
 
 .alert {
-  visibility: hidden;
-  padding: $btn-padding-y $btn-padding-x;
+  padding: $alert-padding-y $alert-padding-x;
   width: $alert-width;
-  border-radius: $btn-border-radius-sm;
+  border-radius: $alert-border-radius;
   border: $border-width solid transparent;
   box-shadow: $btn-box-shadow;
   position: relative;
-  @include alert-style($primary,$white);
+  margin-top: .5rem;
+  @include alert-style($primary,$dark);
 
   .alert-title {
     margin-bottom: 0;
@@ -36,20 +36,21 @@
     font-style: normal;
     cursor: pointer;
     font-weight: $alert-icon-font-weight;
-    font-size: $alert-icon-font-size;
   }
 }
 
+//  使用了Transition组件后，此属性可以不需要
+//.is-show{
+//  display: block;
+//}
+
 .alert-danger{
-  @include alert-style($danger,$white)
+  @include alert-style($danger,#004085)
 }
 .alert-warning{
-  @include alert-style($warning,$gray-700)
+  @include alert-style($warning,#004085)
 }
-.alert-dark{
-  @include alert-style(darken($body-color,30%),$white)
+.alert-info{
+  @include alert-style($info,#004085)
 }
 
-.show {
-  visibility:visible;
-}

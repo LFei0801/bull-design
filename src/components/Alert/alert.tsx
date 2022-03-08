@@ -9,6 +9,8 @@
  */
 import {FC, ReactNode} from "react";
 import classnames from "classnames";
+import {Icon} from "../Icon/icon";
+import {Transition} from "../Transition/transition";
 
 export interface AlertProps {
   visible : boolean
@@ -16,7 +18,7 @@ export interface AlertProps {
   onClose ?: () => void
   title ?: string
   children ?: ReactNode
-  type ?: "primary" | "dark" | "danger" | "warning"
+  type ?: "primary" | "info" | "danger" | "warning"
   className ?: string
 }
 
@@ -24,7 +26,6 @@ export const Alert:FC<AlertProps> = props => {
   const { title,visible,children, type, onClose,className,closeable } = props
   const classes = classnames("alert",className, {
     [`alert-${type}`] : type,
-    "show" : visible
   })
 
   const handleClick = () => {
@@ -35,23 +36,27 @@ export const Alert:FC<AlertProps> = props => {
 
   //Todo 添加动画效果，用icon组件替换关闭按钮
   return (
-    <div className={classes}>
-      {
-        title && (
-          <h4 className={"alert-title"}>{title}</h4>
-        )
-      }
-      <p className={"alert-message"}>{children}</p>
-      {
-        closeable && (
-          <i
-            className={"alert-close-icon"}
-            onClick={handleClick}>
-            关闭
-          </i>
-        )
-      }
-    </div>
+    <Transition
+      in={visible}
+      timeout={300}
+      animation={"zoom-in-top"}
+      wrapper
+    >
+      <div className={classes}>
+        {title && <h4 className={"alert-title"}>{title}</h4>}
+        <p className={"alert-message"}>{children}</p>
+        {
+          closeable && (
+            <Icon
+              icon={"times"}
+              className={"alert-close-icon"}
+              onClick={handleClick}
+              size={"lg"}
+            />
+          )
+        }
+      </div>
+    </Transition>
   )
 }
 

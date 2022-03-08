@@ -1,32 +1,26 @@
-import {Menu} from "./components/Menu/menu";
-import {MenuItem} from "./components/Menu/menu-item";
-import {SubMenu} from "./components/Menu/sub-menu";
+import {Button} from "./components/Button/button";
+import {useState} from "react";
+import {Alert} from "./components/Alert/alert";
 
 export default function App() {
+  const [visible,setVisible] = useState(false)
   return (
     <>
-      <Menu mode={"horizontal"}>
-        <MenuItem>
-          item 01
-        </MenuItem>
-        <MenuItem>
-          item 02
-        </MenuItem>
-        <MenuItem>
-          item 03
-        </MenuItem>
-        <SubMenu title={"drop down"}>
-          <MenuItem>
-            sub item 01
-          </MenuItem>
-          <MenuItem>
-            sub item 02
-          </MenuItem>
-          <MenuItem>
-            sub item 03
-          </MenuItem>
-        </SubMenu>
-      </Menu>
+      <Button
+        btnType={"primary"}
+        onClick={() => setVisible(!visible)}
+      >
+        show Message
+      </Button>
+      <Alert
+        visible={visible}
+        closeable
+        type={"info"}
+        title={"Animate alert Message"}
+        onClose={() => setVisible(false)}
+      >
+        this is the Message
+      </Alert>
     </>
   )
 }
