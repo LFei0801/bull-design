@@ -1,33 +1,59 @@
-import {Menu} from "./components/Menu/menu";
-import {MenuItem} from "./components/Menu/menu-item";
-import {SubMenu} from "./components/Menu/sub-menu";
+import {Tabs} from "./components/Tabs/tabs";
+import {TabItem} from "./components/Tabs/tabs-item";
 
 export default function App() {
   return (
     <>
-      <Menu
+      <Tabs
         onSelect={(index) => console.log(index)}
-        mode={"horizontal"}
-        defaultOpenedMenu={["3"]}
+        mode={"card"}
       >
-        <MenuItem>
-          first menu item
-        </MenuItem>
-        <MenuItem disabled>
-          second menu item
-        </MenuItem>
-        <MenuItem>
-          third menu item
-        </MenuItem>
-        <SubMenu title={"subMenu"} >
-          <MenuItem>
-            first sub menu item
-          </MenuItem>
-          <MenuItem>
-            second sub menu item
-          </MenuItem>
-        </SubMenu>
-      </Menu>
+        <TabItem label={"card1"}>
+          <p>Content of Tab Pane 1</p>
+          <p>Content of Tab Pane 1</p>
+          <p>Content of Tab Pane 1</p>
+        </TabItem>
+        <TabItem label={"card2"}>
+          <p>Content of Tab Pane 2</p>
+          <p>Content of Tab Pane 2</p>
+          <p>Content of Tab Pane 2</p>
+        </TabItem>
+        <TabItem label={"card3"}>
+          <p>Content of Tab Pane 3</p>
+          <p>Content of Tab Pane 3</p>
+          <p>Content of Tab Pane 3</p>
+        </TabItem>
+        <TabItem label={"card4"}>
+          <p>Content of Tab Pane 4</p>
+          <p>Content of Tab Pane 4</p>
+          <p>Content of Tab Pane 4</p>
+        </TabItem>
+      </Tabs>
+      <Tabs
+        onSelect={(index) => console.log(index)}
+        mode={"line"}
+      >
+        <TabItem label={"card1"}>
+          <p>Content of Tab Pane 1</p>
+          <p>Content of Tab Pane 1</p>
+          <p>Content of Tab Pane 1</p>
+        </TabItem>
+        <TabItem label={"card2"}>
+          <p>Content of Tab Pane 2</p>
+          <p>Content of Tab Pane 2</p>
+          <p>Content of Tab Pane 2</p>
+        </TabItem>
+        <TabItem label={"card3"}>
+          <p>Content of Tab Pane 3</p>
+          <p>Content of Tab Pane 3</p>
+          <p>Content of Tab Pane 3</p>
+        </TabItem>
+        <TabItem label={"card4"}>
+          <p>Content of Tab Pane 4</p>
+          <p>Content of Tab Pane 4</p>
+          <p>Content of Tab Pane 4</p>
+        </TabItem>
+      </Tabs>
     </>
   )
 }

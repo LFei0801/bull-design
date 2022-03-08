@@ -20,7 +20,6 @@ export interface MenuProps {
   defaultOpenedMenu ?: string[]
 }
 
-// TODO 完成SubMenu组件，添加单元测试
 export const MenuContext = createContext<{
   index : string,
   onSelect ?: (selectIndex : string) => void
