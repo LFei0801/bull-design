@@ -3,7 +3,15 @@
 <br>
 技术栈：React Hooks + Typescript + axios + scss + jest
 <br>
-计划完成的组件以及进度：
+下载依赖：
+```
+npm install
+```
+启动Story book
+```
+npm run storyBook
+```
+**计划完成的组件以及进度**：
 - Button : 按钮组件 （已完成）
 - Alert  : 消息提示组件（已完成）
 - Menu   : 菜单组件，包括MenuItem和SubMenu(已完成)

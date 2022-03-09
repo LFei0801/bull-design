@@ -3,6 +3,9 @@ import {FC} from "react";
 import classnames from "classnames";
 
 export interface IconProps extends FontAwesomeIconProps {
+  /**
+   * icon类型
+   */
   theme ?: "primary" | "warning" | "info" | "danger" | "secondary" | "light" | "dark" | "success"
 }
 
