@@ -13,12 +13,35 @@ import {Icon} from "../Icon/icon";
 import {Transition} from "../Transition/transition";
 
 export interface AlertProps {
+  /**
+   * 控制是否显示组件
+   * true 显示组件
+   * false 不显示组件
+   */
   visible : boolean
+  /**
+   * 是否显示关闭按钮
+   */
   closeable ?: boolean
+  /**
+   * 点击关闭按钮时，触发的回调函数
+   */
   onClose ?: () => void
+  /**
+   * Alert的标题，一般用于醒目的提示信息
+   */
   title ?: string
+  /**
+   * Alert组件内部的内容
+   */
   children ?: ReactNode
+  /**
+   * Alert的类型
+   */
   type ?: "primary" | "info" | "danger" | "warning"
+  /**
+   * 自定义的class类名
+   */
   className ?: string
 }
 
@@ -33,8 +56,7 @@ export const Alert:FC<AlertProps> = props => {
       onClose()
     }
   }
-
-  //Todo 添加动画效果，用icon组件替换关闭按钮
+  
   return (
     <Transition
       in={visible}

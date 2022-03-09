@@ -12,11 +12,31 @@ import classnames from "classnames";
 import {MenuItemProps} from "./menu-item";
 
 export interface MenuProps {
+  /**
+   * 默认高亮显示的菜单
+   */
   defaultIndex ?: string
+  /**
+   * 自定义类没
+   */
   className ?: string
+  /**
+   * CSS Style
+   */
   style ?: CSSProperties
+  /**
+   * 菜单类型
+   * horizontal : 水平菜单
+   * vertical : 垂直菜单
+   */
   mode ?: "horizontal" | "vertical"
+  /**
+   * 点击菜单项的回调函数
+   */
   onSelect ?: (selectIndex : string) => void
+  /**
+   * 默认打开的子菜单
+   */
   defaultOpenedMenu ?: string[]
 }
 

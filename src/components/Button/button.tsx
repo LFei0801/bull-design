@@ -24,7 +24,7 @@ export interface ButtonProps extends NativeButtonAndLinkProps{
   /**
    * Button组件文本
    */
-  children : React.ReactNode
+  children ?: React.ReactNode
 }
 
 export const Button:FC<ButtonProps> = props => {
