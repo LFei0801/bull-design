@@ -8,13 +8,16 @@
 - Alert  : 消息提示组件（已完成）
 - Menu   : 菜单组件，包括MenuItem和SubMenu(已完成)
 - Tabs   : 选项卡组件,包括TabItem(已完成)
-- Icon   : 图标组件，计划封装FontAwesome图标完成Icon组件 
+- Icon   : 图标组件，计划封装FontAwesome图标完成Icon组件（已完成）
+- Rate   : 评分组件
 - Input  ： 输入框
 - Form   ： 表单
 - AutoComplete : 根据输入框的内容自动提示信息
-- Card   : 卡片组件
 - Drawer ：抽屉组件
 - Calender : 日历组件
+- Upload : 上传
+- Table  : 表格组件
+- Carousel : 走马灯(轮播图)组件
 - MarkDown : MarkDown 编辑器
 
 以及添加StoriesBook 完成组件文档化（未完成）<br>
