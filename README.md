@@ -18,10 +18,14 @@ npm run storyBook
 - Tabs   : 选项卡组件,包括TabItem(已完成)
 - Icon   : 图标组件，计划封装FontAwesome图标完成Icon组件（已完成）
 - Rate   : 评分组件
+- Icon   : 图标组件，计划封装FontAwesome图标完成Icon组件(已完成)
 - Input  ： 输入框
+- Select : 选择器
 - Form   ： 表单
 - AutoComplete : 根据输入框的内容自动提示信息
 - Drawer ：抽屉组件
+- Table  : 表格
+- Carousel : 走马灯(轮播图)组件
 - Calender : 日历组件
 - Upload : 上传
 - Table  : 表格组件
