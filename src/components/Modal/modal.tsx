@@ -124,7 +124,7 @@ export const Modal:FC<ModalProps> = props => {
       <div className={"bull-modal-wrap"}>
         <Transition
           in={visible}
-          timeout={500}
+          timeout={1000}
           animation={"zoom-in-top"}
         >
           {/* Modal*/}
