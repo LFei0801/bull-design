@@ -17,7 +17,7 @@ npm run storyBook
 - Menu   : 菜单组件，包括MenuItem和SubMenu(已完成)
 - Tabs   : 选项卡组件,包括TabItem(已完成)
 - Icon   : 图标组件，计划封装FontAwesome图标完成Icon组件（已完成）
-- Modal  : 对话框 
+- Modal  : 对话框(完成基本内容)
 - Icon   : 图标组件，计划封装FontAwesome图标完成Icon组件(已完成)
 - Input  ： 输入框
 - Select : 选择器

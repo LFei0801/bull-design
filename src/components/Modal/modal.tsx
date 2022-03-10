@@ -86,6 +86,31 @@ export const Modal:FC<ModalProps> = props => {
     }
   }
 
+  const generateFoot = () => {
+    if(footer) {
+      return footer
+    }else if(footer === undefined) {
+      return  (
+        <>
+            <Button
+              onClick={handleCancel}
+            >
+              {cancelText}
+            </Button>
+            <Button
+              btnType={"primary"}
+              onClick={handleOk}
+              style={{marginLeft:".5rem"}}
+            >
+              {okText}
+            </Button>
+        </>
+      )
+    }else {
+      return null
+    }
+  }
+
   if(!visible) {
     return null
   }
@@ -125,26 +150,9 @@ export const Modal:FC<ModalProps> = props => {
               {children}
             </div>
             {/*  底部 */}
-            {
-              footer !== null ?  (
-                <div className={"model-footer"}>
-                  <div className={"model-btn-group"}>
-                    <Button
-                      onClick={handleCancel}
-                    >
-                      {cancelText}
-                    </Button>
-                    <Button
-                      btnType={"primary"}
-                      onClick={handleOk}
-                      style={{marginLeft:".5rem"}}
-                    >
-                      {okText}
-                    </Button>
-                  </div>
-                </div>
-              ) : null
-            }
+            <div className={"modal-footer"}>
+              {generateFoot()}
+            </div>
           </div>
         </Transition>
       </div>
