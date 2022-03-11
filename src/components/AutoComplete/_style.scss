@@ -1,0 +1,46 @@
+.bull-auto-complete {
+  position: relative;
+  max-width: 500px;
+
+  .suggestion-loading-icon {
+    position: absolute;
+    top: 200%;
+    left: calc(50% - 30px);
+    min-height: 50px;
+    color: $primary;
+  }
+
+  .suggestion-list {
+    width: 100%;
+    list-style: none;
+    padding-left: 0;
+    white-space: nowrap;
+    position: absolute;
+    background: $white;
+    z-index: 100;
+    top: 100%;
+    left: 0;
+    border: $menu-border-width solid $menu-border-color;
+    box-shadow: $submenu-box-shadow;
+
+    .suggestion-item {
+      padding: $auto-complete-item-padding-y $auto-complete-item-padding-x;
+      cursor: pointer;
+      color: $body-color;
+      font-size: $font-size-sm;
+      border-bottom: 1px solid $auto-complete-item-border-color;
+
+      &:last-child {
+        border-bottom: 1px solid transparent;
+      }
+
+      &.is-highlight {
+        background: $primary !important;
+        color: $white;
+      }
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
