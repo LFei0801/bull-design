@@ -1,0 +1,86 @@
+.bull-select-wrapper {
+  position: relative;
+  max-width: 500px;
+
+  .select-text-wrapper {
+    overflow-wrap: break-word;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 500px;
+
+    .arrow-icon{
+      position: absolute;
+      cursor: pointer;
+      height: 100%;
+      width: 35px;
+      right: 0;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $input-color;
+
+      svg {
+        color: $input-placeholder-color
+      }
+    }
+
+    .select-text {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      padding: $input-padding-y $auto-complete-item-padding-x;
+      font-family: $input-font-family;
+      font-size: $input-font-size;
+      font-weight: $input-font-weight;
+      color : $input-color;
+      background-color: $input-bg;
+      background-clip: padding-box;
+      border: $input-border-width solid $input-border-color;
+      box-shadow: $input-box-shadow;
+      border-radius: $input-border-radius;
+      transition: $input-transition;
+
+      &:focus {
+        color : $input-focus-color;
+        background-color: $input-focus-bg;
+        outline: none;
+        box-shadow: $input-focus-box-shadow;
+      }
+      &:disabled {
+        background-color: $input-disabled-bg;
+        border-color:  $input-disabled-border-color;
+        opacity: 1;
+      }
+    }
+  }
+
+  .select-list {
+    padding-left: 0;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    white-space: nowrap;
+    border: $menu-border-width solid $menu-border-color;
+    box-shadow: $submenu-box-shadow;
+
+    .select-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: $font-weight-bold;
+      padding: $auto-complete-item-padding-y $auto-complete-item-padding-x;
+      color: $body-color;
+      cursor: pointer;
+
+      &.is-selected {
+        background-color: #e6f7ff;
+        color: #1890ff;
+      }
+    }
+  }
+}

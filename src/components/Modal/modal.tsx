@@ -10,7 +10,7 @@
  * style
  * closable
  */
-import {CSSProperties, FC, ReactNode} from "react";
+import {CSSProperties, FC, ReactNode, useRef, useState} from "react";
 import {Icon} from "../Icon/icon";
 import {Button} from "../Button/button";
 import {Transition} from "../Transition/transition";
@@ -58,7 +58,7 @@ export interface ModalProps {
   className ?: string
 }
 
-// Todo 支持Promise事件
+// Todo 支持点击Mask关闭Modal框
 export const Modal:FC<ModalProps> = props => {
   const {
     title,
@@ -71,9 +71,8 @@ export const Modal:FC<ModalProps> = props => {
     visible,
     className,
     children,
-    footer
+    footer,
   } = props
-
   const handleOk = () => {
     if(onOk) {
       onOk()
@@ -88,10 +87,14 @@ export const Modal:FC<ModalProps> = props => {
 
   const generateFoot = () => {
     if(footer) {
-      return footer
+      return (
+        <div className={"modal-footer"}>
+          {footer}
+        </div>
+      )
     }else if(footer === undefined) {
       return  (
-        <>
+        <div className={"modal-footer"}>
             <Button
               onClick={handleCancel}
             >
@@ -104,7 +107,7 @@ export const Modal:FC<ModalProps> = props => {
             >
               {okText}
             </Button>
-        </>
+        </div>
       )
     }else {
       return null
@@ -120,7 +123,7 @@ export const Modal:FC<ModalProps> = props => {
       className={"modal-container"}
     >
       {/*遮罩层*/}
-      <div className={"modal-mask"} />
+      <div className={"modal-mask"}/>
       <div className={"bull-modal-wrap"}>
         <Transition
           in={visible}
@@ -150,9 +153,7 @@ export const Modal:FC<ModalProps> = props => {
               {children}
             </div>
             {/*  底部 */}
-            <div className={"modal-footer"}>
-              {generateFoot()}
-            </div>
+            {generateFoot()}
           </div>
         </Transition>
       </div>
@@ -165,5 +166,5 @@ Modal.defaultProps = {
   closable : true,
   title : "Modal",
   okText : "确定",
-  cancelText : "取消"
+  cancelText : "取消",
 }

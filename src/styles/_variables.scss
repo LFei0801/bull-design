@@ -317,8 +317,30 @@ $input-group-addon-border-color:        $input-border-color !default;
 
 // Autocomplete
 $auto-complete-item-padding-y:          .1rem !default;
-$auto-complete-item-padding-x:          .3rem !default;
+$auto-complete-item-padding-x:          .5rem !default;
 $auto-complete-item-border-color:       rgba(0,0,0,.06);
+
+// Tags
+$tags-bg-colors:
+    (
+      "primary":    #e6f7ff,
+      "secondary":  #ffffff,
+      "success":    #f6ffed,
+      "info":       #e6fffb,
+      "warning":    #feffe6,
+      "danger":     #fff1f0,
+      "light":      #fff7e6,
+    );
+
+$tags-colors:    (
+    "primary":    #1890ff,
+    "secondary":  #bfbfbf,
+    "success":    #52c41a,
+    "info":       #13c2c2,
+    "warning":    #d4b106,
+    "danger":     #f5222d,
+    "light":      #fa8c16,
+);
 
 // Progress bars
 
