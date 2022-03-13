@@ -1,7 +1,12 @@
-@each $key,$value in $theme-colors {
+@each $key,$value in $tags-colors {
+  .tag-#{$key} {
+    color: $value;
+  }
+}
+
+@each $key,$value in $tags-bg-colors {
   .tag-#{$key} {
     background-color: $value;
-    color: $white;
   }
 }
 
@@ -11,6 +16,7 @@
   margin: 0 8px 0 0;
   font-variant: tabular-nums;
   list-style: none;
+  border-radius: $border-radius;
   font-feature-settings: "tnum";
   display: inline-block;
   height: auto;
@@ -18,7 +24,6 @@
   line-height: 20px;
   white-space: nowrap;
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
   opacity: 1;
   transition: all .3s;
   cursor: pointer;
@@ -30,13 +35,6 @@
     font-size: 10px;
     cursor: pointer;
     transition: all .3s;
-    opacity: 0;
-  }
-
-  &:hover{
-    .tag-close-icon {
-      opacity: 1;
-    }
   }
 }
 

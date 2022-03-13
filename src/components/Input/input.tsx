@@ -7,7 +7,7 @@
  * icon ?: 图标
  * disabled ?: 禁用Input
  */
-import {InputHTMLAttributes, ReactNode, FC, ChangeEvent} from "react";
+import {InputHTMLAttributes, ReactNode, FC, ChangeEvent, ReactElement} from "react";
 import classnames from "classnames"
 import {Icon} from "../Icon/icon";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
@@ -42,11 +42,15 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, "size
   /**
    * 点击图标触发的回调函数
    */
-  onClick ?: () => void
+  onIconClick ?: () => void
+  /**
+   * Input框中的节点
+   */
+  children ?:  ReactElement
 }
 
 export const Input:FC<InputProps> = props => {
-  const {disabled,size, prepend, icon, append,className, style, onClick,...restProps } = props
+  const {disabled,size, prepend, icon, append,className, style, onIconClick,...restProps } = props
 
   const classes = classnames("bull-input-wrapper",className, {
     [`input-size-${size}`] : size,
@@ -77,7 +81,7 @@ export const Input:FC<InputProps> = props => {
       {prepend && <div className={"bull-input-group-prepend"}>{prepend}</div>}
       {/* icon */}
       {icon &&
-      <div className={"icon-wrapper"} onClick={onClick}>
+      <div className={"icon-wrapper"} onClick={onIconClick}>
         <Icon icon={icon} />
       </div>
       }

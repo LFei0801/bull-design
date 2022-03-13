@@ -26,3 +26,8 @@ export const Tag:FC<TagProps> = props => {
     </div>
   )
 }
+
+Tag.defaultProps = {
+  type : "default",
+  closeable : false
+}
