@@ -38,7 +38,7 @@ export interface SelectProps{
   width ?: string
 }
 
-// TODO 创建Option组件，增加组件语义化
+// TODO 增加onChange和onVisibleChange方法，当选择的数据更改时，通过回调函数传递给用户
 export const Select:FC<SelectProps> = props => {
   const {options, defaultOptions, mode, placeholder, width} = props
   // 选项数组
