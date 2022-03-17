@@ -22,7 +22,7 @@ singleSelect.args = {
   options : options,
   defaultOptions : "Luffy",
   width : "200px",
-  placeholder : "请选择"
+  placeholder : "请选择",
 }
 
 export const multipleSelect = Template.bind({})
@@ -30,5 +30,5 @@ multipleSelect.args = {
   mode : "multiple",
   options : options,
   width : "200px",
-  placeholder : "请选择"
+  placeholder : "请选择",
 }

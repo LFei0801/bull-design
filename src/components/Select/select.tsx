@@ -16,10 +16,25 @@ export type optionType = {
 }
 
 export interface SelectProps{
+  /**
+   * 提示的文字
+   */
   placeholder ?: string
+  /**
+   * 渲染的下拉列表数据
+   */
   options : string[]
+  /*
+  * 默认选择的下拉列表数据
+   */
   defaultOptions ?: string | string[]
+  /**
+   * 单选或者多选
+   */
   mode ?: "single" | "multiple",
+  /**
+   * 选择框的宽度，最大宽度为500px
+   */
   width ?: string
 }
 
@@ -61,7 +76,7 @@ export const Select:FC<SelectProps> = props => {
   useEffect(() => {
     const str = selectOptions.filter(opt => opt.selected).map(opt => opt.value).join(" ")
     setSelectValue(str)
-  },[selectOptions])
+  },[selectOptions, selectValue])
 
   // 点击配置选将其设为选则/未选择状态
   const handleClickItem = (index:number) => {
