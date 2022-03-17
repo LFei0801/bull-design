@@ -1,26 +1,28 @@
-import {Button} from "./components/Button/button";
-import {useState} from "react";
-import {Alert} from "./components/Alert/alert";
+import {ChangeEvent} from "react";
+import axios from "axios";
 
 export default function App() {
-  const [visible,setVisible] = useState(false)
+  const  handleChange = (e:ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if(files) {
+      const uploadFile = files[0]
+      const formData = new FormData()
+      formData.append(uploadFile.name, uploadFile)
+      axios.post("https://jsonplaceholder.typicode.com/posts",formData, {
+        headers : {
+          'Content-type' : "multipart/form-data"
+        }
+      }).then(res => {
+        console.log(res.data)
+      })
+    }
+  }
+
   return (
     <>
-      <Button
-        btnType={"primary"}
-        onClick={() => setVisible(!visible)}
-      >
-        show Message
-      </Button>
-      <Alert
-        visible={visible}
-        closeable
-        type={"info"}
-        title={"Animate alert Message"}
-        onClose={() => setVisible(false)}
-      >
-        this is the Message
-      </Alert>
+      <form method={"post"} encType={"multipart/form-data"} action={"http://server.com"}>
+        <input type={"file"} name={"myFile"} onChange={handleChange}/>
+      </form>
     </>
   )
 }
