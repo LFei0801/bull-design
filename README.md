@@ -26,7 +26,6 @@ npm run storyBook
 - Drawer ：抽屉组件
 - Table  : 表格
 - Calender : 日历组件
-- Table  : 表格组件
 - MarkDown : MarkDown 编辑器
 
 以及添加StoriesBook 完成组件文档化（未完成）<br>
