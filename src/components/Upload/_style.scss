@@ -3,7 +3,7 @@
     margin-top: 1rem;
     padding-left: 0;
     list-style: none;
-    width: 15rem;
+    width: 20rem;
 
     .bull-upload-list-item {
       padding: $auto-complete-item-padding-y $auto-complete-item-padding-y;
@@ -50,6 +50,23 @@
           display: block;
         }
       }
+    }
+  }
+
+  .bull-uploader-dragger {
+    width: 20rem;
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: $gray-200;
+    border-radius: $border-radius;
+
+    &.is-dragover {
+      background-color: $white;
+      border: 2px dashed $primary;
+      color: $primary;
     }
   }
 }

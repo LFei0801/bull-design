@@ -1,6 +1,8 @@
 import {ComponentStory, ComponentMeta} from '@storybook/react'
 import {Upload, UploadFileType} from "../components/Upload/upload";
 import {action} from "@storybook/addon-actions";
+import {Button} from "../components/Button/button";
+import {Icon} from "../components/Icon/icon";
 
 export default {
   title : "Upload",
@@ -37,28 +39,44 @@ const Template : ComponentStory<typeof Upload> = args => <Upload {...args}/>
 
 export const simpleUpload = Template.bind({})
 simpleUpload.args = {
-  defaultUploadFileList : defaultFileList
+  defaultUploadFileList : defaultFileList,
+  children : <Button btnType={"primary"}>upload file</Button>
 }
 
 export const CheckFileSizeUpload = Template.bind({})
 CheckFileSizeUpload.args = {
-  text : "check file size before upload file",
-  beforeUpload : checkFileSize
+  beforeUpload : checkFileSize,
+  children : <Button btnType={"primary"}>check file size before upload file</Button>
 }
 
 export const ChangeFileNameUpload = Template.bind({})
 ChangeFileNameUpload.args = {
-  text : "change file name after uploaded file",
-  beforeUpload : changeFileName
+  beforeUpload : changeFileName,
+  children : <Button btnType={"primary"}>change file name after uploaded file</Button>
 }
 
 export const designOwnData = Template.bind({})
 designOwnData.args = {
-  text : "design your file data which upload and support upload multiple files",
   headers : {"X-Power-by" : "bull-design"},
   data : {"form" : "bull-design"},
   multiple : true,
-  accept : ".pdf"
+  accept : ".pdf",
+  children : <Button btnType={"primary"}>design your file data which upload and support upload multiple files</Button>
+}
+
+export const DragUpload = Template.bind({})
+DragUpload.args = {
+  headers : {"X-Power-by" : "bull-design"},
+  data : {"form" : "bull-design"},
+  multiple : true,
+  accept : ".pdf",
+  drag : true,
+  children : (
+    <>
+      <Icon icon={"upload"} size={"5x"} theme={"primary"}/>
+      <p style={{ marginTop : "10px"}}>拖拽文件或者点击此区域上传文件</p>
+    </>
+  )
 }
 
 

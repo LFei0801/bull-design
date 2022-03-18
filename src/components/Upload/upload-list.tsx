@@ -29,8 +29,8 @@ export const UploadList : FC<UploadListProps> = ({fileList,onRemove}) => {
               </span>
               <span className={"file-action"}>
                 <Icon
-                  icon={"times"}
-                  theme={"secondary"}
+                  icon={"trash"}
+                  theme={"danger"}
                   onClick={() => onRemove?.(_file)}
                 />
               </span>

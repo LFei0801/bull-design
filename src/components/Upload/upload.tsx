@@ -1,7 +1,8 @@
 import {ChangeEvent, FC, useRef, useState} from "react";
 import {Button} from "../Button/button";
-import axios from "axios";
 import {UploadList} from "./upload-list";
+import axios from "axios";
+import {Dragger} from "./dragger";
 
 export type UploadFileType = {
   uid : string
@@ -15,10 +16,6 @@ export type UploadFileType = {
 }
 
 export interface UploadProps {
-  /**
-   * 上传文件按钮的文本
-   */
-  text ?: string
   /**
    * 文件上传的地址
    */
@@ -77,6 +74,10 @@ export interface UploadProps {
    * 允许上传文件的后缀名
    */
   accept ?: string
+  /**
+   * 拖住上传组件
+   */
+  drag ?: boolean
 }
 
 export const Upload : FC<UploadProps> = props => {
@@ -87,7 +88,6 @@ export const Upload : FC<UploadProps> = props => {
     onProgress,
     beforeUpload,
     onChange,
-    text,
     onRemove,
     defaultUploadFileList,
     headers,
@@ -95,7 +95,9 @@ export const Upload : FC<UploadProps> = props => {
     name,
     withCredentials,
     multiple,
-    accept
+    accept,
+    drag,
+    children
   } = props
 
   const inputRef = useRef<HTMLInputElement>(null)
@@ -232,17 +234,21 @@ export const Upload : FC<UploadProps> = props => {
 
   return (
     <div className={"bull-upload-wrapper"}>
-      <Button btnType={"primary"} onClick={handleClick}>
-        {text ? text : "upload file"}
-      </Button>
-      <input
-        style={{display:"none"}}
-        type={"file"}
-        ref={inputRef}
-        onChange={handleUpload}
-        multiple={multiple}
-        accept={accept}
-      />
+      <div className={"bull-upload-inner"}
+        onClick={handleClick}
+      >
+        {
+          drag ? <Dragger onFile={files => uploadFiles(files)} >{children}</Dragger> : children
+        }
+        <input
+          style={{display:"none"}}
+          type={"file"}
+          ref={inputRef}
+          onChange={handleUpload}
+          multiple={multiple}
+          accept={accept}
+        />
+      </div>
       <UploadList
         fileList={fileList}
         onRemove={handleRemove}
