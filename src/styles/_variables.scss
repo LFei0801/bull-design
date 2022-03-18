@@ -342,6 +342,13 @@ $tags-colors:    (
     "light":      #fa8c16,
 );
 
+// upload list
+$file-colors : (
+  "uploading" : $primary,
+  "success" : $success,
+  "error" : $danger
+);
+
 // Progress bars
 
 $progress-font-size:                $font-size-base * .75 !default;

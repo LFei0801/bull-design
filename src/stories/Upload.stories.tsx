@@ -1,5 +1,5 @@
 import {ComponentStory, ComponentMeta} from '@storybook/react'
-import {Upload} from "../components/Upload/upload";
+import {Upload, UploadFileType} from "../components/Upload/upload";
 import {action} from "@storybook/addon-actions";
 
 export default {
@@ -20,6 +20,12 @@ const changeFileName = (file : File) => {
   return Promise.resolve(newFile)
 }
 
+const defaultFileList : UploadFileType[] = [
+  {uid : Date.now() + "file0", name : "笔记.md" , status : "uploading" },
+  {uid : Date.now() + "file1", name : "test.md" , status : "success" },
+  {uid : Date.now() + "file2", name : "README.md" , status : "error" },
+]
+
 const Template : ComponentStory<typeof Upload> = args => <Upload {...args}/>
 
 export const simpleUpload = Template.bind({})
@@ -29,6 +35,7 @@ simpleUpload.args = {
   onProgress : action("progress"),
   onError : action("error"),
   onChange : action("changed"),
+  defaultUploadFileList : defaultFileList
 }
 
 export const CheckFileSizeUpload = Template.bind({})
