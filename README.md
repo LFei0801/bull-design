@@ -23,7 +23,7 @@ npm run storyBook
 - AutoComplete : 根据输入框的内容自动提示信息(已完成)
 - Drawer ：抽屉组件
 - Table  : 表格
-- Carousel : 走马灯(轮播图)组件
+- Carousel : 走马灯(轮播图)组件(基本完成，需要优化ScrollX动画的逻辑)
 - Calender : 日历组件
 - Upload : 上传(完成)
 - Table  : 表格组件
