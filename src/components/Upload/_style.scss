@@ -10,7 +10,17 @@
       position: relative;
       font-size: $font-size-base;
 
+
       .file-name {
+        display: flex;
+        overflow: hidden;
+        align-items: center;
+        .file-text {
+          width: 80%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
         svg {
           margin-right: .3rem;
         }
@@ -19,6 +29,7 @@
       .file-status {
         position: absolute;
         right: .5rem;
+        top: 0;
       }
 
       .file-action {

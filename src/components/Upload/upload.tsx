@@ -26,15 +26,15 @@ export interface UploadProps {
   /**
    * 上传过程中的回调
    */
-  onProgress ?: (percentage : number, file :File) => void
+  onProgress ?: (percentage : number, file :UploadFileType) => void
   /**
    * 文件上传成功的回调
    */
-  onSuccess ?: (data : any , file :File) => void
+  onSuccess ?: (data : any , file :UploadFileType) => void
   /**
    * 文件上传失败的回调
    */
-  onError ?: (err : any , file :File) => void
+  onError ?: (err : any , file :UploadFileType) => void
   /**
    * 文件上传之前做的一些处理
    */
@@ -43,7 +43,7 @@ export interface UploadProps {
    * 文件后的回调函数
    * 成功和失败都会触发
    */
-  onChange ?: (data : any, file : File) => void
+  onChange ?: (data : any, file : UploadFileType) => void
   /**
    * 初始的上传文件列表
    */
@@ -52,6 +52,31 @@ export interface UploadProps {
    * 删除文件的回调函数
    */
   onRemove ?: (_file : UploadFileType) => void
+  /**
+   * 自定义header
+   * 比如 : Content-Type : "application/json"
+   */
+  headers ?: {[key : string] : any}
+  /**
+   * 发送到后端的文件参数名称
+   */
+  name ?: string
+  /**
+   * 上传所需的额外参数
+   */
+  data ?: {[key : string] : any}
+  /**
+   * 是否携带 cookie
+   */
+  withCredentials ?: boolean,
+  /**
+   * 是否支持上传多个文件
+   */
+  multiple ?: boolean
+  /**
+   * 允许上传文件的后缀名
+   */
+  accept ?: string
 }
 
 export const Upload : FC<UploadProps> = props => {
@@ -64,7 +89,13 @@ export const Upload : FC<UploadProps> = props => {
     onChange,
     text,
     onRemove,
-    defaultUploadFileList
+    defaultUploadFileList,
+    headers,
+    data,
+    name,
+    withCredentials,
+    multiple,
+    accept
   } = props
 
   const inputRef = useRef<HTMLInputElement>(null)
@@ -137,20 +168,30 @@ export const Upload : FC<UploadProps> = props => {
       percentage : 0,
       status : "ready"
     }
-    setFileList([...fileList,_file])
+    // setFileList([...fileList,_file])
+    setFileList(prevList => [...prevList, _file])
     const formData = new FormData()
-    formData.append(file.name,file)
+    // 自定义发送到后台的数据名称
+    formData.append(name || "file",file)
+    // 添加发送到后台的额外数据
+    if(data) {
+      Object.keys(data).forEach(key => {
+        formData.append(key,data[key])
+      })
+    }
     axios.post(action, formData, {
       headers : {
+        ...headers,
         "Content-Type" : "multipart/form-data"
       },
+      withCredentials,
       onUploadProgress : e => {
         const percentage = Math.round((e.loaded * 100 ) / e.total) || 0
         if(percentage < 100) {
           // 更新fileList
           updateFileList(_file,{percentage, status : "uploading"})
           if(onProgress) {
-            onProgress(percentage, file)
+            onProgress(percentage, _file)
           }
         }
       }
@@ -161,10 +202,10 @@ export const Upload : FC<UploadProps> = props => {
         percentage : 100,
       })
       if(onSuccess) {
-        onSuccess(res.data, file)
+        onSuccess(res.data, _file)
       }
       if(onChange) {
-        onChange(res.data, file)
+        onChange(res.data, _file)
       }
     }).catch(err => {
       console.error(err.message)
@@ -173,10 +214,10 @@ export const Upload : FC<UploadProps> = props => {
         error : err
       })
       if(onError) {
-        onError(err,file)
+        onError(err,_file)
       }
       if(onChange) {
-        onChange(err, file)
+        onChange(err, _file)
       }
     })
   }
@@ -199,6 +240,8 @@ export const Upload : FC<UploadProps> = props => {
         type={"file"}
         ref={inputRef}
         onChange={handleUpload}
+        multiple={multiple}
+        accept={accept}
       />
       <UploadList
         fileList={fileList}
@@ -206,4 +249,9 @@ export const Upload : FC<UploadProps> = props => {
       />
     </div>
   )
+}
+
+Upload.defaultProps = {
+  name : "file",
+  multiple : false,
 }

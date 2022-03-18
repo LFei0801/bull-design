@@ -4,7 +4,14 @@ import {action} from "@storybook/addon-actions";
 
 export default {
   title : "Upload",
-  component : Upload
+  component : Upload,
+  args : {
+    action : "https://jsonplaceholder.typicode.com/posts",
+    onSuccess : action("success"),
+    onProgress : action("progress"),
+    onError : action("error"),
+    onChange : action("changed"),
+  }
 } as ComponentMeta<typeof Upload>
 
 const checkFileSize = (file : File) => {
@@ -21,7 +28,7 @@ const changeFileName = (file : File) => {
 }
 
 const defaultFileList : UploadFileType[] = [
-  {uid : Date.now() + "file0", name : "笔记.md" , status : "uploading" },
+  {uid : Date.now() + "file0", name : "笔记.md" , status : "uploading",percentage : 40 },
   {uid : Date.now() + "file1", name : "test.md" , status : "success" },
   {uid : Date.now() + "file2", name : "README.md" , status : "error" },
 ]
@@ -30,34 +37,28 @@ const Template : ComponentStory<typeof Upload> = args => <Upload {...args}/>
 
 export const simpleUpload = Template.bind({})
 simpleUpload.args = {
-  action : "https://jsonplaceholder.typicode.com/posts",
-  onSuccess : action("success"),
-  onProgress : action("progress"),
-  onError : action("error"),
-  onChange : action("changed"),
   defaultUploadFileList : defaultFileList
 }
 
 export const CheckFileSizeUpload = Template.bind({})
 CheckFileSizeUpload.args = {
   text : "check file size before upload file",
-  action : "https://jsonplaceholder.typicode.com/posts",
-  onSuccess : action("success"),
-  onProgress : action("progress"),
-  onError : action("error"),
-  onChange : action("changed"),
   beforeUpload : checkFileSize
 }
 
 export const ChangeFileNameUpload = Template.bind({})
 ChangeFileNameUpload.args = {
   text : "change file name after uploaded file",
-  action : "https://jsonplaceholder.typicode.com/posts",
-  onSuccess : action("success"),
-  onProgress : action("progress"),
-  onError : action("error"),
-  onChange : action("changed"),
   beforeUpload : changeFileName
+}
+
+export const designOwnData = Template.bind({})
+designOwnData.args = {
+  text : "design your file data which upload and support upload multiple files",
+  headers : {"X-Power-by" : "bull-design"},
+  data : {"form" : "bull-design"},
+  multiple : true,
+  accept : ".pdf"
 }
 
 
