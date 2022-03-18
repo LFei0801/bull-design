@@ -1,0 +1,86 @@
+
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  ul {
+    width: 100%;
+    list-style: none;
+    padding-left: 0;
+  }
+}
+
+// 动画效果为fade
+.effect-fade {
+  .carousel-list {
+    .carousel-item {
+      display: inline-block;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 500ms ease 0s, visibility 500ms ease 0s;
+
+      &.is-show {
+        opacity: 1;
+      }
+
+      &.is-first {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// 动画效果为 scrollX
+.effect-scrollX {
+  .carousel-list {
+    transition: margin-left 500ms ease;
+    display: flex;
+
+    .carousel-item {
+      display: inline-block;
+    }
+  }
+}
+
+.dots-list {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  box-sizing: content-box;
+  z-index: 15;
+
+  .dots-item {
+    width: 16px;
+    height: 3px;
+    margin: 0 3px;
+    text-align: center;
+    transition: transform .2s ease-in-out;
+
+    button {
+      display: block;
+      width: 100%;
+      height: 3px;
+      padding: 0;
+      color: transparent;
+      font-size: 0;
+      background: #fff;
+      border: 0;
+      border-radius: 1px;
+      outline: none;
+      cursor: pointer;
+      opacity: .3;
+      transition: all .5s;
+    }
+
+    &:hover,&.is-active{
+      background-color: $white;
+      transform: scale(1.2);
+    }
+  }
+}
