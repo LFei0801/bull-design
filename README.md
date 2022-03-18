@@ -25,7 +25,7 @@ npm run storyBook
 - Table  : 表格
 - Carousel : 走马灯(轮播图)组件
 - Calender : 日历组件
-- Upload : 上传
+- Upload : 上传(完成)
 - Table  : 表格组件
 - Carousel : 走马灯(轮播图)组件
 - MarkDown : MarkDown 编辑器
