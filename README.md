@@ -11,6 +11,10 @@ npm install
 ```
 npm run storyBook
 ```
+也可以在自己的项目中使用下面的命令下载组件库
+```
+npm i bull-design
+```
 **计划完成的组件以及进度**：
 - Button : 按钮组件 （已完成）
 - Alert  : 消息提示组件（已完成）
@@ -30,6 +34,3 @@ npm run storyBook
 
 以及添加StoriesBook 完成组件文档化（未完成）<br>
 最后计划上传至npm，可以利用下面命令下载使用(已完成)
-```
-npm i bull-design
-```
