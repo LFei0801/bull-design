@@ -29,7 +29,7 @@ npm run storyBook
 - MarkDown : MarkDown 编辑器
 
 以及添加StoriesBook 完成组件文档化（未完成）<br>
-最后计划上传至npm，可以利用下面命令下载使用（未完成）
+最后计划上传至npm，可以利用下面命令下载使用(已完成)
 ```
 npm i bull-design
 ```
