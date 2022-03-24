@@ -4,7 +4,7 @@ import {MenuItem} from "../components/Menu/menu-item";
 import { ComponentMeta } from "@storybook/react"
 
 export default {
-  title: 'Menu',
+  title: 'Component/Menu',
   component: Menu,
 } as ComponentMeta<typeof Menu>;
 

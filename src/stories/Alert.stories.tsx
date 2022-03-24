@@ -4,7 +4,7 @@ import {useState} from "react";
 import {Button} from "../components/Button/button";
 
 export default  {
-  title : "Alert",
+  title : "Component/Alert",
   component : Alert,
 } as ComponentMeta<typeof Alert>
 

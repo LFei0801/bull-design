@@ -3,7 +3,7 @@ import {Input} from "../components/Input/input";
 import {useState} from "react";
 
 export default  {
-  title : "Input",
+  title : "Component/Input",
   component : Input
 } as ComponentMeta<typeof Input>
 

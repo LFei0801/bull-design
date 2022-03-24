@@ -2,7 +2,7 @@ import {Icon} from "../components/Icon/icon";
 import { ComponentStory, ComponentMeta} from "@storybook/react"
 
 export default {
-  title : "Icon",
+  title : "Component/Icon",
   component : Icon,
   argTypes : {
     icon : {

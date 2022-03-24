@@ -3,7 +3,7 @@ import {Carousel} from "../components/Carousel/carousel";
 import {CSSProperties} from "react";
 
 export default {
-  title : "Carousel",
+  title : "Component/Carousel",
   component : Carousel
 } as ComponentMeta<typeof Carousel>
 

@@ -2,7 +2,7 @@ import {ComponentMeta} from '@storybook/react'
 import {AutoComplete, DataSourceType} from "../components/AutoComplete/auto-complete";
 
 export default  {
-  title : "AutoComplete",
+  title : "Component/AutoComplete",
   component : AutoComplete
 } as ComponentMeta<typeof AutoComplete>
 

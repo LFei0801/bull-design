@@ -5,7 +5,7 @@ import {Button} from "../components/Button/button";
 import {Icon} from "../components/Icon/icon";
 
 export default {
-  title : "Upload",
+  title : "Component/Upload",
   component : Upload,
   args : {
     action : "https://jsonplaceholder.typicode.com/posts",
