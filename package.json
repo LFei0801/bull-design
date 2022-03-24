@@ -43,8 +43,7 @@
     "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "prepublish": "npm run build",
-    "chromatic": "npx chromatic --project-token=9bcd556682b0"
+    "prepublish": "npm run build"
   },
   "eslintConfig": {
     "extends": [
