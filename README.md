@@ -15,6 +15,9 @@ npm run storyBook
 ```
 npm i bull-design
 ```
+组件文档地址，使用netiffy自动部署的地址，推荐使用Chrome浏览器观看，可能需要外网才能看，
+后面会在阿里云服务器上部署<br>
+[bull-design文档](https://bulldesign.netlify.app)<br>
 **计划完成的组件以及进度**：
 - Button : 按钮组件 （已完成）
 - Alert  : 消息提示组件（已完成）
